@@ -1,47 +1,47 @@
-# 🏥 Optimisation du Flux de Lits - SPH
+# 🏥 Optimisation du Flux de Lits – SPH
 
-Application **Streamlit** permettant de prévoir le **flux de sorties hospitalières** en utilisant les données COVID hospitalières de Santé Publique France.
+Application **Streamlit** permettant la **prévision des sorties hospitalières (discharges)** à partir des données COVID hospitalières de Santé Publique France.
 
 ---
 
-## 🎯 Objectif du projet
+## 🚀 Objectif du projet
 
-Créer un modèle simple capable de prédire les **sorties de patients (`discharges`)** à J+1 et J+2, afin d’aider à **anticiper la gestion des lits hospitaliers**.
+L’objectif est de développer un modèle capable d’estimer les **sorties de patients** et de fournir des prévisions J+1 et J+2 pour **optimiser la gestion des lits hospitaliers**.
 
 ---
 
 ## 📊 Données utilisées
 
-Les données proviennent du fichier **covid_hosp.csv** (Santé Publique France).
-
-Elles sont transformées à l’aide du script :
+Les données proviennent du fichier SPF **covid_hosp.csv**, transformé en série temporelle quotidienne via :
 
 src/from_spf_to_daily.py
 
 yaml
 Copier le code
 
-Variables finales disponibles :
-
-- **date** – date du jour  
-- **admissions** – admissions estimées  
-- **discharges** – sorties d’hôpital  
-- **occupancy_rate** – taux d’occupation
+Variables finales utilisées :
+- `date` — Date du jour  
+- `admissions` — Admissions estimées  
+- `discharges` — Sorties  
+- `occupancy_rate` — Taux d’occupation estimé
 
 ---
 
 ## 🧠 Modèle de prévision
 
-Le modèle utilisé est une **régression linéaire (scikit-learn)** basée sur :
+Modèle utilisé : **Régression linéaire (scikit-learn)**  
+Features :
 
-| Feature | Rôle |
-|--------|------|
-| `lag1` | Sorties de la veille |
-| `lag7` | Sorties à J-7 |
-| `ma7` | Moyenne mobile sur 7 jours |
-| `dow` | Jour de la semaine |
+| Feature | Description |
+|--------|-------------|
+| `lag1` | Sorties la veille |
+| `lag7` | Sorties il y a 7 jours |
+| `ma7`  | Moyenne mobile 7 jours |
+| `dow`  | Jour de la semaine |
 
-Un benchmark naïf (Naïf-1, Naïf-7) sert de comparaison.
+Benchmarks utilisés :
+- **Naïf-1** : prédiction = valeur de la veille  
+- **Naïf-7** : prédiction = valeur de J-7  
 
 ---
 
@@ -54,7 +54,7 @@ optimisation-flux-lits-SPH/
 │
 ├── data/
 │ ├── raw/ # Données brutes
-│ └── pred/ # Prévisions générées
+│ └── pred/ # Prédictions générées
 │
 ├── models/
 │ └── baseline_linreg.pkl # Modèle sauvegardé
@@ -62,7 +62,7 @@ optimisation-flux-lits-SPH/
 ├── notebooks/
 │ ├── 01_EDA.ipynb
 │ ├── 02_forecast_baseline.ipynb
-│ ├── 03_model_training.ipynb
+│ ├── 03_evaluation_and_dashboard.ipynb
 │ └── 04_dashboard_tests.ipynb
 │
 ├── src/
@@ -79,7 +79,6 @@ Copier le code
 ## 💻 Installation locale
 
 ### 1. Cloner le dépôt
-
 ```bash
 git clone https://github.com/FaycalHass/optimisation-flux-lits-SPH.git
 cd optimisation-flux-lits-SPH
@@ -89,16 +88,17 @@ Copier le code
 conda create -n hug_sph python=3.12 -y
 conda activate hug_sph
 pip install -r requirements.txt
-3. Lancer l'application Streamlit
+3. Lancer l’application Streamlit
 bash
 Copier le code
 cd app
 streamlit run app.py
-📈 Exemple de résultats
+📈 Exemple de prévisions
+scss
 Copier le code
-Prévision J+1 : 864 lits  
-Prévision J+2 : 865 lits  
-🛠️ Technologies utilisées
+Prévision J+1 (2023-04-01) : 864,182 lits  
+Prévision J+2 (2023-04-02) : 864,521 lits
+📚 Technologies utilisées
 Python 3.12
 
 Pandas
@@ -107,16 +107,16 @@ NumPy
 
 Scikit-learn
 
-Streamlit
-
 Matplotlib
+
+Streamlit
 
 Joblib
 
-👤 Auteur
+👨‍💻 Auteur
 Fayçal Hass
 Projet HUG / Santé Publique Hospitalière
 📧 faycalhass@gmail.com
 
-📄 Licence
-Ce projet est distribué sous licence MIT.
+🪪 Licence
+Projet distribué sous licence MIT.
