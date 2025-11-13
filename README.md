@@ -132,23 +132,10 @@ Prévision J+2 : 865 lits
 
 **Fayçal Hass**
 Projet HUG – Santé Publique Hospitalière
-📧 [faycalhass@gmail.com](mailto:faycalhass@gmail.com)
+📧 [faycal.hassani.etu@univ-lille.fr](mailto:faycal.hassani.etu@univ-lille.fr)
 
 ---
 
 ## 🪪 Licence
 
 Projet distribué sous licence **MIT**.
-
-```
-
----
-
-Si tu veux, je peux aussi te générer :  
-🔥 un **logo professionnel** pour ton repo  
-📌 un fichier `requirements.txt` propre  
-📌 un `.gitignore` optimisé  
-🚀 un déploiement Streamlit Cloud / HuggingFace
-
-Tu veux quoi ?
-```
