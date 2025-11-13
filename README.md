@@ -43,8 +43,6 @@ Benchmarks utilisés :
 - **Naïf-1** : prédiction = valeur de la veille  
 - **Naïf-7** : prédiction = valeur de J-7  
 
----
-
 ## 🧩 Architecture du projet
 
 optimisation-flux-lits-SPH/
@@ -71,10 +69,6 @@ optimisation-flux-lits-SPH/
 └── reports/
 └── eda/ # Graphiques d'analyse
 
-yaml
-Copier le code
-
----
 
 ## 💻 Installation locale
 
