@@ -79,6 +79,9 @@ optimisation-flux-lits-SPH/
 │
 └── reports/
     └── eda/                   # Graphiques d’analyse
+
+---
+
 💻 Installation locale
 1. Cloner le dépôt
 bash
