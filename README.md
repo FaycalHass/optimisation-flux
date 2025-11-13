@@ -78,7 +78,6 @@ Copier le code
 
 ## 💻 Installation locale
 
-### 1. Cloner le dépôt
 ```bash
 git clone https://github.com/FaycalHass/optimisation-flux-lits-SPH.git
 cd optimisation-flux-lits-SPH
