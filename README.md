@@ -1,3 +1,10 @@
+Voici **LE README ENTIER**, 100% **Markdown pur**, sans texte autour, prêt à **copier–coller directement** dans ton fichier `README.md` ✔️
+
+👇 **COLLE TOUT ce qui est ci-dessous, uniquement ce bloc :**
+
+---
+
+```markdown
 # 🏥 Optimisation du Flux de Lits – SPH  
 Application Streamlit permettant la **prévision du flux de sorties hospitalières** à partir des données COVID hospitalières (Santé Publique France).
 
@@ -14,10 +21,11 @@ L’objectif est d’estimer les **sorties d’hôpital (discharges)** et de gé
 ## 📊 Données utilisées  
 Les données proviennent de **Santé Publique France** via le fichier `covid_hosp.csv`, puis sont transformées avec :
 
+```
+
 src/from_spf_to_daily.py
 
-yaml
-Copier le code
+```
 
 Variables produites :  
 - `date` — Date  
@@ -45,32 +53,33 @@ Benchmarks :
 
 ## 🗂️ Architecture du projet
 
+```
+
 optimisation-flux-lits-SPH/
 │
 ├── app/
-│ └── app.py # Application Streamlit
+│   └── app.py                     # Application Streamlit
 │
 ├── data/
-│ ├── raw/ # Données brutes
-│ └── pred/ # Prédictions générées
+│   ├── raw/                       # Données brutes
+│   └── pred/                      # Prédictions générées
 │
 ├── models/
-│ └── baseline_linreg.pkl # Modèle sauvegardé
+│   └── baseline_linreg.pkl        # Modèle sauvegardé
 │
 ├── notebooks/
-│ ├── 01_EDA.ipynb # Analyse exploratoire
-│ ├── 02_forecast_baseline.ipynb # Modèle baseline
-│ ├── 03_model_training.ipynb # Entraînement modèle
-│ └── 04_dashboard_tests.ipynb # Tests Streamlit
+│   ├── 01_EDA.ipynb               # Analyse exploratoire
+│   ├── 02_forecast_baseline.ipynb # Modèle baseline
+│   ├── 03_model_training.ipynb    # Entraînement modèle
+│   └── 04_dashboard_tests.ipynb   # Tests Streamlit
 │
 ├── src/
-│ └── from_spf_to_daily.py # Transformation quotidienne
+│   └── from_spf_to_daily.py       # Transformation quotidienne
 │
 └── reports/
-└── eda/ # Graphiques EDA
+└── eda/                       # Graphiques EDA
 
-yaml
-Copier le code
+````
 
 ---
 
@@ -81,41 +90,71 @@ Copier le code
 ```bash
 git clone https://github.com/FaycalHass/optimisation-flux-lits-SPH.git
 cd optimisation-flux-lits-SPH
-2️⃣ Créer l’environnement
-bash
-Copier le code
+````
+
+---
+
+### 2️⃣ Créer l’environnement
+
+```bash
 conda create -n hug_sph python=3.12 -y
 conda activate hug_sph
 pip install -r requirements.txt
-3️⃣ Lancer l’application Streamlit
-bash
-Copier le code
+```
+
+---
+
+### 3️⃣ Lancer l’application Streamlit
+
+```bash
 cd app
 streamlit run app.py
-📈 Exemple de prévisions
-text
-Copier le code
+```
+
+---
+
+## 📈 Exemple de prévisions
+
+```text
 Prévision J+1 : 864 lits
 Prévision J+2 : 865 lits
-🛠️ Technologies utilisées
-Python 3.12
+```
 
-Pandas
+---
 
-NumPy
+## 🛠️ Technologies utilisées
 
-Scikit-learn
+* Python 3.12
+* Pandas
+* NumPy
+* Scikit-learn
+* Streamlit
+* Matplotlib
+* Joblib
 
-Streamlit
+---
 
-Matplotlib
+## 👤 Auteur
 
-Joblib
-
-👤 Auteur
-Fayçal Hass
+**Fayçal Hass**
 Projet HUG – Santé Publique Hospitalière
-📧 faycalhass@gmail.com
+📧 [faycalhass@gmail.com](mailto:faycalhass@gmail.com)
 
-🪪 Licence
-Projet distribué sous licence MIT.
+---
+
+## 🪪 Licence
+
+Projet distribué sous licence **MIT**.
+
+```
+
+---
+
+Si tu veux, je peux aussi te générer :  
+🔥 un **logo professionnel** pour ton repo  
+📌 un fichier `requirements.txt` propre  
+📌 un `.gitignore` optimisé  
+🚀 un déploiement Streamlit Cloud / HuggingFace
+
+Tu veux quoi ?
+```
