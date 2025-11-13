@@ -1,78 +1,88 @@
 # 🏥 Optimisation du Flux de Lits – SPH
 
-Application **Streamlit** permettant la **prévision des sorties hospitalières (discharges)** à partir des données COVID hospitalières de Santé Publique France.
+Application **Streamlit** permettant la **prévision du flux de lits hospitaliers (sorties)** à partir des données hospitalières COVID de **Santé Publique France**.
 
 ---
 
-## 🚀 Objectif du projet
+## 🎯 Objectif du projet
 
-L’objectif est de développer un modèle capable d’estimer les **sorties de patients** et de fournir des prévisions J+1 et J+2 pour **optimiser la gestion des lits hospitaliers**.
+Ce projet vise à développer un modèle prédictif simple et robuste permettant :
+
+- d’estimer le **nombre de sorties hospitalières**,
+- de prévoir les flux en **J+1** et **J+2**,
+- d’**aider à la gestion opérationnelle des lits** dans les hôpitaux.
 
 ---
 
 ## 📊 Données utilisées
 
-Les données proviennent du fichier SPF **covid_hosp.csv**, transformé en série temporelle quotidienne via :
+Les données proviennent du fichier public **covid_hosp.csv** disponible sur Santé Publique France.  
+Elles sont nettoyées et transformées via le script :
 
 src/from_spf_to_daily.py
 
 yaml
 Copier le code
 
-Variables finales utilisées :
-- `date` — Date du jour  
-- `admissions` — Admissions estimées  
-- `discharges` — Sorties  
-- `occupancy_rate` — Taux d’occupation estimé
+Variables finales principales :
+
+- `date` — Date du jour
+- `admissions` — Admissions estimées
+- `discharges` — Sorties hospitalières
+- `occupancy_rate` — Taux d’occupation (capacité estimée à 100 000 lits)
 
 ---
 
-## 🧠 Modèle de prévision
+## 🤖 Modèle utilisé
 
-Modèle utilisé : **Régression linéaire (scikit-learn)**  
-Features :
+Modèle : **Régression linéaire Scikit-learn**
+
+### Features :
 
 | Feature | Description |
 |--------|-------------|
 | `lag1` | Sorties la veille |
-| `lag7` | Sorties il y a 7 jours |
+| `lag7` | Sorties à J-7 |
 | `ma7`  | Moyenne mobile 7 jours |
 | `dow`  | Jour de la semaine |
 
-Benchmarks utilisés :
-- **Naïf-1** : prédiction = valeur de la veille  
-- **Naïf-7** : prédiction = valeur de J-7  
+**Benchmarks de comparaison :**
+
+- *Naïf-1* : prédiction = valeur de la veille  
+- *Naïf-7* : prédiction = valeur de J-7  
+
+---
 
 ## 🧩 Architecture du projet
 
+```text
 optimisation-flux-lits-SPH/
 │
 ├── app/
-│ └── app.py # Application Streamlit
+│   └── app.py                 # Application Streamlit
 │
 ├── data/
-│ ├── raw/ # Données brutes
-│ └── pred/ # Prédictions générées
+│   ├── raw/                   # Données brutes
+│   └── pred/                  # Prédictions générées
 │
 ├── models/
-│ └── baseline_linreg.pkl # Modèle sauvegardé
+│   └── baseline_linreg.pkl    # Modèle sauvegardé
 │
 ├── notebooks/
-│ ├── 01_EDA.ipynb
-│ ├── 02_forecast_baseline.ipynb
-│ ├── 03_evaluation_and_dashboard.ipynb
-│ └── 04_dashboard_tests.ipynb
+│   ├── 01_EDA.ipynb
+│   ├── 02_forecast_baseline.ipynb
+│   ├── 03_evaluation_and_dashboard.ipynb
+│   └── 04_dashboard_tests.ipynb
 │
 ├── src/
-│ └── from_spf_to_daily.py # Transformation des données
+│   └── from_spf_to_daily.py   # Transformation des données
 │
 └── reports/
-└── eda/ # Graphiques d'analyse
-
-
-## 💻 Installation locale
-
-```bash
+    └── eda/                   # Graphiques d’analyse
+💻 Installation locale
+1. Cloner le dépôt
+bash
+Copier le code
 git clone https://github.com/FaycalHass/optimisation-flux-lits-SPH.git
 cd optimisation-flux-lits-SPH
 2. Créer l’environnement
@@ -81,17 +91,16 @@ Copier le code
 conda create -n hug_sph python=3.12 -y
 conda activate hug_sph
 pip install -r requirements.txt
-3. Lancer l’application Streamlit
+3. Lancer l'application Streamlit
 bash
 Copier le code
 cd app
 streamlit run app.py
 📈 Exemple de prévisions
-scss
 Copier le code
-Prévision J+1 (2023-04-01) : 864,182 lits  
-Prévision J+2 (2023-04-02) : 864,521 lits
-📚 Technologies utilisées
+Prévision J+1 : 864 lits
+Prévision J+2 : 865 lits
+🛠️ Technologies utilisées
 Python 3.12
 
 Pandas
@@ -107,9 +116,10 @@ Streamlit
 Joblib
 
 👨‍💻 Auteur
-Fayçal Hass
-Projet HUG / Santé Publique Hospitalière
+Faycal Hass
+Projet HUG – Santé Publique Hospitalière
 📧 faycalhass@gmail.com
 
 🪪 Licence
-Projet distribué sous licence MIT.
+Ce projet est distribué sous licence MIT.
+Vous êtes libre de l’utiliser, le modifier et le redistribuer.
