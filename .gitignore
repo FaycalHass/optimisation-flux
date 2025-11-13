@@ -1,0 +1,37 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Environnements virtuels
+.venv/
+venv/
+env/
+ENV/
+*.env
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Modèles et artefacts
+models/*.pkl
+*.joblib
+
+# Logs
+*.log
+
+# --- IDE / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- Données ---
+data/raw/*
+data/pred/*
+
+# On garde éventuellement un ou deux fichiers de référence
+!data/raw/hospital_daily.csv
+!data/raw/README.md
