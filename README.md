@@ -1,105 +1,99 @@
-# 🏥 Optimisation du Flux de Lits – SPH
-
-Application **Streamlit** permettant la **prévision du flux de lits hospitaliers (sorties)** à partir des données hospitalières COVID de **Santé Publique France**.
-
----
-
-## 🎯 Objectif du projet
-
-Ce projet vise à développer un modèle prédictif simple et robuste permettant :
-
-- d’estimer le **nombre de sorties hospitalières**,
-- de prévoir les flux en **J+1** et **J+2**,
-- d’**aider à la gestion opérationnelle des lits** dans les hôpitaux.
+# 🏥 Optimisation du Flux de Lits – SPH  
+Application Streamlit permettant la **prévision du flux de sorties hospitalières** à partir des données COVID hospitalières (Santé Publique France).
 
 ---
 
-## 📊 Données utilisées
+## 🎯 Objectif du projet  
+L’objectif est d’estimer les **sorties d’hôpital (discharges)** et de générer des prévisions à **J+1 et J+2** afin de soutenir :  
+- la gestion des lits  
+- l’anticipation des flux  
+- la planification hospitalière  
 
-Les données proviennent du fichier public **covid_hosp.csv** disponible sur Santé Publique France.  
-Elles sont nettoyées et transformées via le script :
+---
+
+## 📊 Données utilisées  
+Les données proviennent de **Santé Publique France** via le fichier `covid_hosp.csv`, puis sont transformées avec :
 
 src/from_spf_to_daily.py
 
 yaml
 Copier le code
 
-Variables finales principales :
-
-- `date` — Date du jour
-- `admissions` — Admissions estimées
-- `discharges` — Sorties hospitalières
-- `occupancy_rate` — Taux d’occupation (capacité estimée à 100 000 lits)
+Variables produites :  
+- `date` — Date  
+- `admissions` — Admissions estimées  
+- `discharges` — Sorties estimées  
+- `occupancy_rate` — Taux d’occupation  
 
 ---
 
-## 🤖 Modèle utilisé
-
-Modèle : **Régression linéaire Scikit-learn**
-
-### Features :
+## 🤖 Modèle de prévision  
+Modèle principal : **Régression Linéaire (scikit-learn)**  
 
 | Feature | Description |
 |--------|-------------|
-| `lag1` | Sorties la veille |
-| `lag7` | Sorties à J-7 |
+| `lag1` | Sorties J-1 |
+| `lag7` | Sorties J-7 |
 | `ma7`  | Moyenne mobile 7 jours |
 | `dow`  | Jour de la semaine |
 
-**Benchmarks de comparaison :**
-
-- *Naïf-1* : prédiction = valeur de la veille  
-- *Naïf-7* : prédiction = valeur de J-7  
+Benchmarks :  
+- **Naïf-1** → valeur de la veille  
+- **Naïf-7** → valeur de J-7  
 
 ---
 
-## 🧩 Architecture du projet
+## 🗂️ Architecture du projet
 
-```text
 optimisation-flux-lits-SPH/
 │
 ├── app/
-│   └── app.py                 # Application Streamlit
+│ └── app.py # Application Streamlit
 │
 ├── data/
-│   ├── raw/                   # Données brutes
-│   └── pred/                  # Prédictions générées
+│ ├── raw/ # Données brutes
+│ └── pred/ # Prédictions générées
 │
 ├── models/
-│   └── baseline_linreg.pkl    # Modèle sauvegardé
+│ └── baseline_linreg.pkl # Modèle sauvegardé
 │
 ├── notebooks/
-│   ├── 01_EDA.ipynb
-│   ├── 02_forecast_baseline.ipynb
-│   ├── 03_evaluation_and_dashboard.ipynb
-│   └── 04_dashboard_tests.ipynb
+│ ├── 01_EDA.ipynb # Analyse exploratoire
+│ ├── 02_forecast_baseline.ipynb # Modèle baseline
+│ ├── 03_model_training.ipynb # Entraînement modèle
+│ └── 04_dashboard_tests.ipynb # Tests Streamlit
 │
 ├── src/
-│   └── from_spf_to_daily.py   # Transformation des données
+│ └── from_spf_to_daily.py # Transformation quotidienne
 │
 └── reports/
-    └── eda/                   # Graphiques d’analyse
+└── eda/ # Graphiques EDA
+
+yaml
+Copier le code
 
 ---
 
-💻 Installation locale
-1. Cloner le dépôt
-bash
-Copier le code
+## 💻 Installation locale
+
+### 1️⃣ Cloner le dépôt
+
+```bash
 git clone https://github.com/FaycalHass/optimisation-flux-lits-SPH.git
 cd optimisation-flux-lits-SPH
-2. Créer l’environnement
+2️⃣ Créer l’environnement
 bash
 Copier le code
 conda create -n hug_sph python=3.12 -y
 conda activate hug_sph
 pip install -r requirements.txt
-3. Lancer l'application Streamlit
+3️⃣ Lancer l’application Streamlit
 bash
 Copier le code
 cd app
 streamlit run app.py
 📈 Exemple de prévisions
+text
 Copier le code
 Prévision J+1 : 864 lits
 Prévision J+2 : 865 lits
@@ -112,17 +106,16 @@ NumPy
 
 Scikit-learn
 
-Matplotlib
-
 Streamlit
+
+Matplotlib
 
 Joblib
 
-👨‍💻 Auteur
-Faycal Hass
+👤 Auteur
+Fayçal Hass
 Projet HUG – Santé Publique Hospitalière
 📧 faycalhass@gmail.com
 
 🪪 Licence
-Ce projet est distribué sous licence MIT.
-Vous êtes libre de l’utiliser, le modifier et le redistribuer.
+Projet distribué sous licence MIT.
