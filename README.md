@@ -47,8 +47,7 @@ Benchmarks :
 
 ## 🗂️ Architecture du projet
 
-```
-
+```text
 optimisation-flux-lits-SPH/
 │
 ├── app/
@@ -71,9 +70,8 @@ optimisation-flux-lits-SPH/
 │   └── from_spf_to_daily.py       # Transformation quotidienne
 │
 └── reports/
-└── eda/                       # Graphiques EDA
+    └── eda/                       # Graphiques EDA
 
-````
 
 ---
 
