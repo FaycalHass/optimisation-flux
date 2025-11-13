@@ -1,10 +1,4 @@
-Voici **LE README ENTIER**, 100% **Markdown pur**, sans texte autour, prêt à **copier–coller directement** dans ton fichier `README.md` ✔️
 
-👇 **COLLE TOUT ce qui est ci-dessous, uniquement ce bloc :**
-
----
-
-```markdown
 # 🏥 Optimisation du Flux de Lits – SPH  
 Application Streamlit permettant la **prévision du flux de sorties hospitalières** à partir des données COVID hospitalières (Santé Publique France).
 
